@@ -9,7 +9,7 @@ import (
 	"os"
 	"syscall"
 
-	"github.com/pkg/term/termios"
+	"github.com/schanksysteme/term/termios"
 )
 
 const (

@@ -6,7 +6,7 @@ import (
 	"os"
 	"syscall"
 
-	"github.com/pkg/term/termios"
+	"github.com/schanksysteme/term/termios"
 )
 
 type Term struct {
