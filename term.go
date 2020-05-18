@@ -7,7 +7,7 @@ import (
 	"errors"
 	"io"
 	"os"
-	"syscall"
+	"golang.org/x/sys/unix"
 
 	"github.com/schanksysteme/term/termios"
 )
@@ -24,7 +24,7 @@ var errNotSupported = errors.New("not supported")
 // bytes read and an error, if any. EOF is signaled by a zero count with
 // err set to io.EOF.
 func (t *Term) Read(b []byte) (int, error) {
-	n, e := syscall.Read(t.fd, b)
+	n, e := unix.Read(t.fd, b)
 	if n < 0 {
 		n = 0
 	}
@@ -51,7 +51,7 @@ func (t *Term) SetOption(options ...func(*Term) error) error {
 // written and an error, if any. Write returns a non-nil error when n !=
 // len(b).
 func (t *Term) Write(b []byte) (int, error) {
-	n, e := syscall.Write(t.fd, b)
+	n, e := unix.Write(t.fd, b)
 	if n < 0 {
 		n = 0
 	}
